@@ -7,3 +7,4 @@ Dotenv.load
 
 #Require scrappers
 Dir["./scrappers/*.rb"].each {|file| require file }
+Dir["./bills/*.rb"].each {|file| require file }

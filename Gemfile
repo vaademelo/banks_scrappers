@@ -6,7 +6,9 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "nokogiri"
 gem "pry"
-gem "capybara"
-gem "poltergeist"
-gem "launchy"
+gem "byebug"
+gem 'capybara'
+gem 'selenium-webdriver'
+gem 'chromedriver-helper'
 gem "dotenv"
+gem "money"
