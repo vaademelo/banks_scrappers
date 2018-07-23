@@ -12,3 +12,5 @@ gem 'selenium-webdriver'
 gem 'chromedriver-helper'
 gem "dotenv"
 gem "money"
+gem "pg"
+gem "activerecord"
