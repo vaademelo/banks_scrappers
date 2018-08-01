@@ -1,11 +1,11 @@
 # Require the gems
-require 'capybara/poltergeist'
+# require 'capybara/poltergeist'
 
 # Configure Poltergeist to not blow up on websites with js errors aka every website with js
 # See more options at https://github.com/teampoltergeist/poltergeist#customization
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, timeout:60, js_errors: false)
-end
+# Capybara.register_driver :poltergeist do |app|
+#   Capybara::Poltergeist::Driver.new(app, timeout:60, js_errors: false)
+# end
 
 #Configure Chrome driver
 Capybara.register_driver :selenium do |app|

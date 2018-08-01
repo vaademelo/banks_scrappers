@@ -1,6 +1,5 @@
 # Require the gems listed in Gemfile
 require 'bundler'
-require_relative './setup-capybara'
 
 Bundler.require(:default)
 Dotenv.load
@@ -8,11 +7,11 @@ Dotenv.load
 require 'pg'
 require 'active_record'
 
-#Require scrappers
-Dir["./scrappers/*.rb"].each {|file| require file }
-Dir["./bills/*.rb"].each {|file| require file }
+require_relative './setup-capybara'
 
-# Set up a database that resides in RAM
+Dir["scrappers/*.rb"].each {|file| require_relative "../#{file}" }
+Dir["bills/*.rb"].each {|file| require_relative "../#{file}" }
+
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
   encoding: 'utf8',
