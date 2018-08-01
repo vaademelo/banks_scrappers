@@ -21,7 +21,6 @@ class NubankScrapper < BaseScrapper
     browser.click_link('Faturas')
 
     browser.all(:css, '.md-header md-tab').each do |bill|
-      account =
       amount  = bill.find(:css, '.amount').text.gsub(/([^0-9])/, '').to_i
       period  = bill.find(:css, '.period').text
 
