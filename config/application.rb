@@ -10,7 +10,7 @@ require 'active_record'
 require_relative './setup-capybara'
 
 Dir["scrappers/*.rb"].each {|file| require_relative "../#{file}" }
-Dir["bills/*.rb"].each {|file| require_relative "../#{file}" }
+Dir["models/*.rb"].each {|file| require_relative "../#{file}" }
 
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
