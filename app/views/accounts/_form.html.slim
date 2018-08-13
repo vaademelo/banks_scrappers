@@ -1,0 +1,17 @@
+= simple_form_for account do |f|
+  .row
+    .col-md-6
+      = f.input :name
+    .col-md-6
+      = f.input :account_type,
+                as: :select,
+                collection: Account::ACCOUNT_TYPES
+  .row  
+    .col-md-3
+      = f.input :login
+    .col-md-3
+      = f.input :password
+  
+  .row
+    .col-md-12
+      = f.button :submit

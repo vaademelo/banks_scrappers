@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      account:
+        one: Conta
+        other: Contas
+    attributes:
+      account:
+        name: Nome
+        login: Login
+        password: Senha
+        account_type: Banco

@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
-
 require_relative '../config/application'
 
-pry
+BradescoCartoesScrapper.new.scrape({login: '393.670.578-06', password: '2204', account: :bradesco_cartoes})
+
+byebug
+puts 'end'
