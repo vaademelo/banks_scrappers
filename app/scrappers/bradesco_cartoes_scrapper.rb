@@ -32,18 +32,19 @@ class BradescoCartoesScrapper < BaseScrapper
       sleep(3)
       browser.find('a[title="Extrato Fechado Pressione Enter para selecionar."]').click
       sleep(3)
-      browser.all(:css, '.linksPeriodosFechados li') do |bill|
-        bill.click
+      
+      bill_periods = browser.all(:css, '.linksPeriodosFechados li span:not(.seta_baixo)').map(&:text)
+      bill_periods.each do |period|
+        bill_period_text = "#{MONTHS_TO_HUMAN[period.split('/')[0].upcase]}/#{period.split('/')[1]}"
+        browser.find("a[title='#{bill_period_text}']").click
         sleep(3)
         
-        period = bill.find(:css, 'span:not(.seta_baixo)').text
         amount = browser.find(:css, '.valorTotalRecolhido').text.gsub(/([^0-9])/, '').to_i
 
         @bradesco_cartoes_bill   = Bill.find_by(period: parse_period(period), account: @args[:account])
         @bradesco_cartoes_bill ||= Bill.new(account: @args[:account],
                                             amount: amount,
                                             period: parse_period(period))
-
         fetch_charges
         @bradesco_cartoes_bill.save!
       end
@@ -53,7 +54,8 @@ class BradescoCartoesScrapper < BaseScrapper
   def fetch_charges
     browser.find('.expansor.topb').click
     sleep(3)
-    browser.all(:css, '.rowNormal').each do |charge|
+
+    browser.all(:css, '.tabGenerica.vAm.topb .rowNormal').each do |charge|
       
       charge_info = charge.all(:css, 'td')
 
